@@ -381,6 +381,157 @@ textarea {
   font-size: 12px;
 }
 
+/* Page entrance */
+body {
+  animation: pageFade 0.7s ease;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth card animation */
+.card,
+.stat-card,
+.dash-card,
+form {
+  animation: slideUp 0.6s ease both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hover glow */
+.card:hover,
+.stat-card:hover,
+.dash-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 60px rgba(56, 189, 248, 0.25),
+    0 0 25px rgba(129, 140, 248, 0.25);
+}
+
+/* Button ripple base */
+button,
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Glowing animated border */
+.card::before,
+.stat-card::before,
+.dash-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, #38bdf8, #818cf8, #22c55e, #38bdf8);
+  background-size: 300%;
+  animation: borderMove 5s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover::before,
+.stat-card:hover::before,
+.dash-card:hover::before {
+  opacity: 1;
+}
+
+.card,
+.stat-card,
+.dash-card {
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes borderMove {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 300%;
+  }
+}
+
+/* Floating animation for logo */
+.logo img {
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+/* Pulse glow */
+.logo img {
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.4),
+    0 0 45px rgba(129, 140, 248, 0.3);
+}
+
+/* Smooth links */
+nav a {
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+}
+
+/* Form focus animation */
+input,
+select,
+textarea {
+  transition: 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  transform: scale(1.01);
+}
+
 @media (max-width: 700px) {
   nav {
     flex-wrap: wrap;
