@@ -13,9 +13,112 @@
       <a href="reports.html">Reports</a>
       <button onclick="logout()">Logout</button>
     </nav>
+    <div class="dashboard-stats">
+      <div class="dash-card blue">
+        <h1 id="totalReports">0</h1>
+        <p>Total Reports</p>
+      </div>
 
+      <div class="dash-card yellow">
+        <h1 id="pendingReports">0</h1>
+        <p>Pending</p>
+      </div>
+
+      <div class="dash-card green">
+        <h1 id="resolvedReports">0</h1>
+        <p>Resolved</p>
+      </div>
+
+      <div class="dash-card red">
+        <h1 id="rejectedReports">0</h1>
+        <p>Rejected</p>
+      </div>
+    </div>
+
+    <input id="searchInput" placeholder="Search title, description, name..." />
+
+    <div class="filters">
+      <select id="typeFilter">
+        <option value="">All Types</option>
+        <option>Issue</option>
+        <option>Idea</option>
+        <option>Suggestion</option>
+        <option>Complaint</option>
+      </select>
+
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option>Pending</option>
+        <option>In Review</option>
+        <option>Resolved</option>
+        <option>Rejected</option>
+      </select>
+    </div>
+    <button class="deleteBtn" onclick="deleteReport('${report.id}')">
+      Delete
+    </button>
     <div class="container">
-      <h1>Manage Concerns</h1>
+      <h1>Admin Dashboard</h1>
+
+      <div class="dashboard-stats">
+        <div class="dash-card blue">
+          <h1 id="totalReports">0</h1>
+          <p>Total Reports</p>
+        </div>
+
+        <div class="dash-card yellow">
+          <h1 id="pendingReports">0</h1>
+          <p>Pending</p>
+        </div>
+
+        <div class="dash-card green">
+          <h1 id="resolvedReports">0</h1>
+          <p>Resolved</p>
+        </div>
+
+        <div class="dash-card red">
+          <h1 id="rejectedReports">0</h1>
+          <p>Rejected</p>
+        </div>
+      </div>
+
+      <input
+        id="searchInput"
+        placeholder="Search title, description, name..."
+      />
+
+      <div class="filters">
+        <select id="typeFilter">
+          <option value="">All Types</option>
+          <option>Issue</option>
+          <option>Idea</option>
+          <option>Suggestion</option>
+          <option>Complaint</option>
+        </select>
+
+        <select id="statusFilter">
+          <option value="">All Status</option>
+          <option>Pending</option>
+          <option>In Review</option>
+          <option>Resolved</option>
+          <option>Rejected</option>
+        </select>
+
+        <select id="sortFilter">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="pending">Pending First</option>
+          <option value="resolved">Resolved First</option>
+          <option value="recentReply">Most Recent Reply</option>
+        </select>
+      </div>
+
+      <div class="export-buttons">
+        <button onclick="exportCSV()">Export CSV</button>
+        <button onclick="exportExcel()">Export Excel</button>
+        <button onclick="exportPDF()">Export PDF</button>
+      </div>
+
       <div id="adminList"></div>
     </div>
 
