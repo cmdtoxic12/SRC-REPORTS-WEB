@@ -93,6 +93,31 @@
       <div id="adminList"></div>
     </div>
 
+    <div class="chat-float" id="chatFloat">
+      <button class="chat-toggle" onclick="toggleChat()">💬</button>
+
+      <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+          <div>
+            <strong>ConcernHub Support</strong>
+            <small>Online</small>
+          </div>
+          <button onclick="toggleChat()">×</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <div class="bot-msg">Hi 👋 How can we help you?</div>
+        </div>
+
+        <div class="chat-input">
+          <input id="chatInput" placeholder="Type your message..." />
+          <button onclick="sendChat()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="chat.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
     <script src="auth-check.js"></script>
