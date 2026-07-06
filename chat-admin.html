@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Admin Chat Inbox</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://files.catbox.moe/ta4pt5.png"
+    />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="https://files.catbox.moe/ta4pt5.png" alt="ConcernHub logo" />
+        <div class="logo-text">
+          <h2>ConcernHub</h2>
+          <small>EP College of Education, Amedzofe</small>
+        </div>
+      </a>
+
+      <a href="admin.html">Dashboard</a>
+      <button onclick="logout()">Logout</button>
+    </nav>
+
+    <div class="container">
+      <h1>Live Chat Inbox</h1>
+
+      <div class="chat-admin-layout">
+        <div class="chat-users" id="chatUsers"></div>
+
+        <div class="chat-panel">
+          <div id="selectedChatTitle" class="chat-panel-title">
+            Select a conversation
+          </div>
+
+          <div
+            class="chat-messages admin-chat-messages"
+            id="adminChatMessages"
+          ></div>
+
+          <div class="chat-input">
+            <input id="adminChatInput" placeholder="Type admin reply..." />
+            <button onclick="sendAdminReply()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="auth-check.js"></script>
+    <script src="chat-admin.js"></script>
+  </body>
+</html>
