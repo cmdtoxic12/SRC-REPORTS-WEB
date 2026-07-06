@@ -10,10 +10,10 @@ form.addEventListener("submit", async (e) => {
     type: document.getElementById("type").value,
     category: document.getElementById("category").value.trim(),
     title: document.getElementById("title").value.trim(),
-    description: document.getElementById("description").value.trim()
+    description: document.getElementById("description").value.trim(),
   };
 
-  const { error } = await supabaseClient.from("reports").insert([report]);
+  const { error } = await supabaseClient.from("reports").insert(report);
 
   if (error) {
     message.textContent = "❌ Failed to submit concern.";
