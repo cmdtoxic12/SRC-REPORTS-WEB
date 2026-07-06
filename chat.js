@@ -34,11 +34,21 @@ function toggleChat() {
 
 async function sendChat() {
   const input = document.getElementById("chatInput");
-  const text = input.value.trim();
+  const messages = document.getElementById("chatMessages");
 
+  const text = input.value.trim();
   if (!text) return;
 
   input.value = "";
+
+  const tempMsg = {
+    message: text,
+    is_admin: false,
+    created_at: new Date().toISOString(),
+  };
+
+  messages.innerHTML += messageBubble(tempMsg);
+  messages.scrollTop = messages.scrollHeight;
 
   const { error } = await supabaseClient.from("live_chat").insert({
     user_id: currentUserId,
@@ -49,7 +59,7 @@ async function sendChat() {
 
   if (error) {
     console.error(error);
-    alert("Message failed to send.");
+    alert("Message failed to save.");
   }
 }
 
