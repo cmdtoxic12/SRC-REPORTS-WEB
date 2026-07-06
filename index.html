@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report & Ideas Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h2>ConcernHub</h2>
+      <a href="index.html">Home</a>
+      <a href="submit.html">Submit</a>
+      <a href="reports.html">Reports</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+
+    <section class="hero">
+      <h1>Report Issues. Share Ideas.</h1>
+      <p>A simple platform where people raise concerns and admins reply.</p>
+
+      <div class="stats">
+        <div class="stat-card">
+          <h2 id="totalReports">0</h2>
+          <p>Total Reports</p>
+        </div>
+
+        <div class="stat-card">
+          <h2 id="totalIdeas">0</h2>
+          <p>Ideas</p>
+        </div>
+
+        <div class="stat-card">
+          <h2 id="totalIssues">0</h2>
+          <p>Issues</p>
+        </div>
+
+        <div class="stat-card">
+          <h2 id="totalResolved">0</h2>
+          <p>Resolved</p>
+        </div>
+
+        <div class="stat-card">
+          <h2 id="totalPending">0</h2>
+          <p>Pending</p>
+        </div>
+      </div>
+
+      <a class="btn" href="submit.html">Submit Concern</a>
+    </section>
+
+    <section class="container">
+      <h2>Recent Concerns</h2>
+      <div id="recentReports"></div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
