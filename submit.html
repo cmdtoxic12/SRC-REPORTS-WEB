@@ -1,44 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Submit Concern</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav>
-    <h2>ConcernHub</h2>
-    <a href="index.html">Home</a>
-    <a href="submit.html">Submit</a>
-    <a href="reports.html">Reports</a>
-  </nav>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Submit Concern</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://files.catbox.moe/ta4pt5.png"
+    />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <img
+          src="https://files.catbox.moe/ta4pt5.png"
+          alt="EP College of Education Logo"
+        />
+        <div class="logo-text">
+          <h2>ConcernHub</h2>
+          <small>EP College of Education, Amedzofe</small>
+        </div>
+      </a>
+      <a href="index.html">Home</a>
+      <a href="submit.html">Submit</a>
+      <a href="reports.html">Reports</a>
+    </nav>
 
-  <div class="container">
-    <h1>Submit Issue or Idea</h1>
+    <div class="container">
+      <h1>Submit Issue or Idea</h1>
 
-    <form id="reportForm">
-      <input id="name" placeholder="Your name">
-      <input id="email" type="email" placeholder="Your email">
+      <form id="reportForm">
+        <input id="name" placeholder="Your name" />
+        <input id="email" type="email" placeholder="Your email" />
 
-      <select id="type" required>
-        <option value="">Select Type</option>
-        <option value="Issue">Issue</option>
-        <option value="Idea">Idea</option>
-        <option value="Suggestion">Suggestion</option>
-        <option value="Complaint">Complaint</option>
-      </select>
+        <select id="type" required>
+          <option value="">Select Type</option>
+          <option value="Issue">Issue</option>
+          <option value="Idea">Idea</option>
+          <option value="Suggestion">Suggestion</option>
+          <option value="Complaint">Complaint</option>
+        </select>
 
-      <input id="category" placeholder="Category e.g. School, Website, Community">
-      <input id="title" placeholder="Title" required>
-      <textarea id="description" placeholder="Describe your concern..." required></textarea>
+        <input
+          id="category"
+          placeholder="Category e.g. School, Website, Community"
+        />
+        <input id="title" placeholder="Title" required />
+        <textarea
+          id="description"
+          placeholder="Describe your concern..."
+          required
+        ></textarea>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
 
-    <p id="message"></p>
-  </div>
+      <p id="message"></p>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase.js"></script>
-  <script src="submit.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="submit.js"></script>
+  </body>
 </html>

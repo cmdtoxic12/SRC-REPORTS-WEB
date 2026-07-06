@@ -1,33 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Reports</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav>
-    <h2>ConcernHub</h2>
-    <a href="index.html">Home</a>
-    <a href="submit.html">Submit</a>
-    <a href="reports.html">Reports</a>
-  </nav>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Reports</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://files.catbox.moe/ta4pt5.png"
+    />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <img
+          src="https://files.catbox.moe/ta4pt5.png"
+          alt="EP College of Education Logo"
+        />
+        <div class="logo-text">
+          <h2>ConcernHub</h2>
+          <small>EP College of Education, Amedzofe</small>
+        </div>
+      </a>
+      <a href="index.html">Home</a>
+      <a href="submit.html">Submit</a>
+      <a href="reports.html">Reports</a>
+    </nav>
 
-  <div class="container">
-    <h1>All Concerns</h1>
+    <div class="container">
+      <h1>All Concerns</h1>
 
-    <select id="filter">
-      <option value="">All</option>
-      <option value="Issue">Issues</option>
-      <option value="Idea">Ideas</option>
-      <option value="Suggestion">Suggestions</option>
-      <option value="Complaint">Complaints</option>
-    </select>
+      <select id="filter">
+        <option value="">All</option>
+        <option value="Issue">Issues</option>
+        <option value="Idea">Ideas</option>
+        <option value="Suggestion">Suggestions</option>
+        <option value="Complaint">Complaints</option>
+      </select>
 
-    <div id="reportsList"></div>
-  </div>
+      <div id="reportsList"></div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase.js"></script>
-  <script src="reports.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="reports.js"></script>
+  </body>
 </html>
