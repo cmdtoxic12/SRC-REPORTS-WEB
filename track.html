@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Track Report | ConcernHub</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://files.catbox.moe/ta4pt5.png"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <div class="logo-glass">
+          <img
+            src="https://files.catbox.moe/ta4pt5.png"
+            alt="EP College of Education, Amedzofe logo"
+          />
+        </div>
+
+        <div class="logo-text">
+          <h2>ConcernHub</h2>
+          <small>EP College of Education, Amedzofe</small>
+        </div>
+      </a>
+
+      <a href="index.html">Home</a>
+      <a href="submit.html">Submit</a>
+      <a href="reports.html">Reports</a>
+      <a href="track.html" class="active">Track</a>
+    </nav>
+
+    <main class="container track-page">
+      <section class="track-hero">
+        <span class="track-icon">🔎</span>
+
+        <h1>Track Your Report</h1>
+
+        <p>Enter the tracking ID given to you after submitting your concern.</p>
+      </section>
+
+      <section class="track-search-card">
+        <form id="trackForm">
+          <label for="trackingInput">Tracking ID</label>
+
+          <div class="tracking-input-group">
+            <input
+              id="trackingInput"
+              type="text"
+              placeholder="Example: CH-20260714-3815"
+              autocomplete="off"
+              required
+            />
+
+            <button id="trackButton" type="submit">Track Report</button>
+          </div>
+        </form>
+
+        <p id="trackMessage" class="track-message"></p>
+      </section>
+
+      <section id="trackingResult" class="tracking-result" hidden></section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="track.js"></script>
+    <script src="animations.js"></script>
+  </body>
+</html>

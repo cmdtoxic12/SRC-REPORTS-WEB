@@ -34,12 +34,42 @@ function toggleChat() {
 
 async function sendChat() {
   const input = document.getElementById("chatInput");
+  const fileInput = document.getElementById("chatFile");
   const messages = document.getElementById("chatMessages");
 
   const text = input.value.trim();
   if (!text) return;
 
+  let fileURL = null;
+
+  // Upload file
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+
+    const fileName = `${currentUserId}/${Date.now()}-${file.name}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from("chat-files")
+      .upload(fileName, file);
+
+    if (uploadError) {
+      console.error(uploadError);
+      alert("File upload failed");
+      return;
+    }
+
+    const { data } = supabaseClient.storage
+      .from("chat-files")
+      .getPublicUrl(fileName);
+
+    fileURL = data.publicUrl;
+  }
+
+  // Prevent empty messages
+  if (!text && !fileURL) return;
+
   input.value = "";
+  fileInput.value = "";
 
   const tempMsg = {
     message: text,
@@ -55,6 +85,7 @@ async function sendChat() {
     sender: "Visitor",
     message: text,
     is_admin: false,
+    file_url: fileURL,
   });
 
   if (error) {
@@ -64,14 +95,49 @@ async function sendChat() {
 }
 
 function messageBubble(msg) {
+  let attachment = "";
+
+  if (msg.file_url) {
+    if (msg.file_url.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+      attachment = `
+        <br>
+        <img 
+          src="${msg.file_url}"
+          style="
+          max-width:200px;
+          border-radius:10px;
+          margin-top:8px;
+          "
+        >
+      `;
+    } else {
+      attachment = `
+        <br>
+        <a 
+        href="${msg.file_url}" 
+        target="_blank">
+        📎 Open Attachment
+        </a>
+      `;
+    }
+  }
+
   return `
+
     <div class="${msg.is_admin ? "bot-msg" : "user-msg"}">
+
       ${escapeHTML(msg.message)}
-      <small>${formatTime(msg.created_at)}</small>
+
+      ${attachment}
+
+      <small>
+        ${formatTime(msg.created_at)}
+      </small>
+
     </div>
+
   `;
 }
-
 function listenForMessages() {
   supabaseClient
     .channel("live-chat-user")

@@ -54,11 +54,33 @@
           required
         ></textarea>
 
-        <button type="submit">Submit</button>
+        <label>Supporting Attachments (Optional)</label>
+
+<input
+    type="file"
+    id="attachments"
+    multiple
+    accept="
+      image/*,
+      application/pdf,
+      video/*,
+      .doc,
+      .docx,
+      .xls,
+      .xlsx,
+      .ppt,
+      .pptx
+    ">
+
+<div id="attachmentPreview"></div>
+
+ <button type="submit" class="submit-btn">
+        Submit Report
+    </button>
+<div id="message"></div>
       </form>
 
-      <p id="message"></p>
-    </div>
+      <div id="confirmationMessage" class="confirmation-message"></div>
 
     <div class="chat-float" id="chatFloat">
       <button class="chat-toggle" onclick="toggleChat()">💬</button>

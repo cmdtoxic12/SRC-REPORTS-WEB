@@ -82,7 +82,32 @@ function renderReports() {
           <p><strong>Category:</strong> ${escapeHTML(report.category || "None")}</p>
 
           <h4>Description</h4>
-          <p>${escapeHTML(report.description)}</p>
+<p>${escapeHTML(report.description)}</p>
+
+${
+  report.attachments
+    ?.map(
+      (file) => `
+
+<div class="attachment-item">
+
+${
+  file.type.startsWith("image/")
+    ? `<img
+src="${file.url}"
+class="report-image"
+onclick="openImage('${file.url}')">`
+    : `<a href="${file.url}" target="_blank">
+📎 ${file.name}
+</a>`
+}
+
+</div>
+
+`,
+    )
+    .join("") || ""
+}
         </div>
 
         <select id="status-${report.id}">
@@ -299,6 +324,28 @@ function formatDate(date) {
 
 function cleanCSV(value) {
   return String(value || "").replace(/"/g, '""');
+}
+
+function openImage(url) {
+  const overlay = document.createElement("div");
+
+  overlay.className = "image-modal";
+
+  overlay.innerHTML = `
+    <div class="image-modal-content">
+      <span class="close-image">&times;</span>
+
+      <img src="${url}">
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector(".close-image").onclick = () => overlay.remove();
+
+  overlay.onclick = (e) => {
+    if (e.target === overlay) overlay.remove();
+  };
 }
 
 function escapeHTML(value) {

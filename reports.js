@@ -23,21 +23,35 @@ async function loadReports() {
 
   reportsList.innerHTML = "";
 
-  data.forEach(report => {
+  data.forEach((report) => {
     reportsList.innerHTML += `
       <div class="card">
         <h3>${report.title}</h3>
         <p>${report.description}</p>
+       ${
+         report.image_url
+           ? `
+<div class="report-image-container">
+    <img
+        src="${report.image_url}"
+        class="report-image"
+        alt="Attached evidence"
+        onclick="window.open('${report.image_url}','_blank')"
+    >
+</div>
+`
+           : ""
+       }
         <span>${report.type}</span>
         <span>${report.status}</span>
 
         ${
           report.admin_reply
-          ? `<div class="reply">
+            ? `<div class="reply">
               <strong>Admin Reply:</strong>
               <p>${report.admin_reply}</p>
             </div>`
-          : `<p class="no-reply">No admin reply yet.</p>`
+            : `<p class="no-reply">No admin reply yet.</p>`
         }
       </div>
     `;

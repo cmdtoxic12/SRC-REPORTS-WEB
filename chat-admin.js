@@ -8,7 +8,7 @@ let allChats = [];
 async function loadChatUsers() {
   const { data, error } = await supabaseClient
     .from("live_chat")
-    .select("*")
+    .select("user_id, message, sender, created_at, file_url, is_admin")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -33,7 +33,11 @@ async function loadChatUsers() {
     chatUsers.innerHTML += `
       <div class="chat-user" onclick="openConversation('${user.user_id}')">
         <strong>${user.sender || "Visitor"}</strong>
-        <p>${escapeHTML(user.message)}</p>
+        <p>
+${
+  user.message ? escapeHTML(user.message) : user.file_url ? "📎 Attachment" : ""
+}
+</p>
         <small>${formatTime(user.created_at)}</small>
       </div>
     `;
@@ -46,7 +50,7 @@ async function openConversation(userId) {
 
   const { data, error } = await supabaseClient
     .from("live_chat")
-    .select("*")
+    .select("message, sender, created_at, file_url, is_admin")
     .eq("user_id", userId)
     .order("created_at", { ascending: true });
 
@@ -113,10 +117,44 @@ function listenAdminRealtime() {
 }
 
 function messageBubble(msg) {
+  let attachment = "";
+
+  if (msg.file_url) {
+    const isImage = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i.test(msg.file_url);
+
+    if (isImage) {
+      attachment = `
+        <br>
+        <img
+          src="${msg.file_url}"
+          style="
+            max-width:220px;
+            border-radius:10px;
+            margin-top:8px;
+            cursor:pointer;
+          "
+          onclick="window.open('${msg.file_url}','_blank')"
+        >
+      `;
+    } else {
+      attachment = `
+        <br>
+        <a href="${msg.file_url}" target="_blank">
+          📎 Open Attachment
+        </a>
+      `;
+    }
+  }
+
   return `
     <div class="${msg.is_admin ? "user-msg" : "bot-msg"}">
-      ${escapeHTML(msg.message)}
+
+      ${msg.message ? escapeHTML(msg.message) : ""}
+
+      ${attachment}
+
       <small>${formatTime(msg.created_at)}</small>
+
     </div>
   `;
 }
