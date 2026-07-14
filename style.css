@@ -172,7 +172,13 @@ textarea {
 }
 
 .card {
-  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.card * {
+  transition: all 0.35s ease;
 }
 
 .card:hover {
@@ -421,9 +427,12 @@ form {
 .stat-card:hover,
 .dash-card:hover {
   transform: translateY(-6px);
+
+  border-color: transparent;
+
   box-shadow:
-    0 20px 60px rgba(56, 189, 248, 0.25),
-    0 0 25px rgba(129, 140, 248, 0.25);
+    0 0 20px rgba(56, 189, 248, 0.25),
+    0 20px 55px rgba(0, 0, 0, 0.4);
 }
 
 /* Button ripple base */
@@ -563,11 +572,28 @@ button,
   inset: 0;
   border-radius: inherit;
   padding: 1px;
+
   background: linear-gradient(120deg, #38bdf8, #818cf8, #22c55e, #38bdf8);
+
   background-size: 300%;
   animation: borderMove 5s linear infinite;
   opacity: 0;
   pointer-events: none;
+
+  /* Only show the gradient around the border */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  mask-composite: exclude;
+
+  z-index: 3;
 }
 
 .card:hover::before,
