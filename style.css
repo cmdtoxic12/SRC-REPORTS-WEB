@@ -1255,3 +1255,38 @@ textarea:focus {
 .file-btn:hover {
   opacity: 0.8;
 }
+
+.emoji-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.15);
+}
+
+.chat-input {
+  position: relative;
+}
+
+#emojiContainer {
+  position: absolute;
+  bottom: 55px;
+  left: 0;
+
+  display: none;
+
+  z-index: 9999;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+#emojiContainer.show {
+  display: block;
+}

@@ -65,6 +65,8 @@ async function openConversation(userId) {
     adminChatMessages.innerHTML += messageBubble(msg);
   });
 
+  markMessagesAsRead(userId);
+
   adminChatMessages.scrollTop = adminChatMessages.scrollHeight;
 }
 
@@ -92,6 +94,28 @@ async function sendAdminReply() {
     console.error(error);
     alert("Failed to send reply.");
   }
+}
+
+async function markMessagesAsRead(userId) {
+
+  const { data, error } = await supabaseClient
+    .from("live_chat")
+    .update({
+      is_read: true
+    })
+    .eq("user_id", userId)
+    .eq("is_admin", false)
+    .eq("is_read", false)
+    .select();
+
+
+  if (error) {
+    console.error("Read update failed:", error);
+    return;
+  }
+
+  console.log("Messages marked as read:", data);
+
 }
 
 function listenAdminRealtime() {

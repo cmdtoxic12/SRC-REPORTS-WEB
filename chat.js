@@ -77,8 +77,8 @@ async function sendChat() {
     created_at: new Date().toISOString(),
   };
 
-  messages.innerHTML += messageBubble(tempMsg);
-  messages.scrollTop = messages.scrollHeight;
+  //messages.innerHTML += messageBubble(tempMsg);
+  // messages.scrollTop = messages.scrollHeight;
 
   const { error } = await supabaseClient.from("live_chat").insert({
     user_id: currentUserId,
@@ -131,8 +131,11 @@ function messageBubble(msg) {
       ${attachment}
 
       <small>
-        ${formatTime(msg.created_at)}
-      </small>
+${formatTime(msg.created_at)}
+
+${msg.is_admin ? "" : msg.is_read ? " ✓✓" : " ✓"}
+
+</small>
 
     </div>
 
@@ -158,11 +161,48 @@ function listenForMessages() {
     .subscribe();
 }
 
+const emojiBtn = document.getElementById("emojiBtn");
+const emojiContainer = document.getElementById("emojiContainer");
+const emojiPicker = document.getElementById("emojiPicker");
+
+emojiBtn.onclick = () => {
+  emojiContainer.classList.toggle("show");
+};
+
+emojiPicker.addEventListener("emoji-click", (event) => {
+  chatInput.value += event.detail.unicode;
+  chatInput.focus();
+});
+
+document.addEventListener("click", (e) => {
+  if (!emojiContainer.contains(e.target) && !emojiBtn.contains(e.target)) {
+    emojiContainer.classList.remove("show");
+  }
+});
+
 function formatTime(date) {
   return new Date(date).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function listenForReadReceipts() {
+  supabaseClient
+    .channel("read-status")
+    .on(
+      "postgres_changes",
+      {
+        event: "UPDATE",
+        schema: "public",
+        table: "live_chat",
+        filter: `user_id=eq.${currentUserId}`,
+      },
+      (payload) => {
+        loadChatMessages();
+      },
+    )
+    .subscribe();
 }
 
 function escapeHTML(value) {
@@ -176,6 +216,7 @@ function escapeHTML(value) {
 
 loadChatMessages();
 listenForMessages();
+listenForReadReceipts();
 
 document.getElementById("chatInput")?.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {

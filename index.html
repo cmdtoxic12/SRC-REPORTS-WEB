@@ -88,6 +88,11 @@
           <label for="chatFile" class="file-btn"> + </label>
 
           <input type="file" id="chatFile" hidden />
+          <button id="emojiBtn">😊</button>
+
+          <div id="emojiContainer">
+        <emoji-picker id="emojiPicker"></emoji-picker>
+    </div>
           <input id="chatInput" placeholder="Type your message..." />
           <button onclick="sendChat()">Send</button>
         </div>
@@ -98,6 +103,10 @@
     <script src="supabase.js"></script>
     <script src="index.js"></script>
     <script src="animations.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+    ></script>
     <script src="chat.js"></script>
   </body>
 </html>

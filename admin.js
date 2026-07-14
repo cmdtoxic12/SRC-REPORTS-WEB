@@ -226,6 +226,23 @@ function exportExcel() {
       </tr>
   `;
 
+  async function markMessagesAsRead(userId) {
+    const { data, error } = await supabaseClient
+      .from("live_chat")
+      .update({
+        is_read: true,
+      })
+      .eq("user_id", userId)
+      .eq("is_admin", false)
+      .select();
+
+    console.log("Updated:", data);
+
+    if (error) {
+      console.error("Read update failed:", error);
+    }
+  }
+
   allReports.forEach((r) => {
     table += `
       <tr>
