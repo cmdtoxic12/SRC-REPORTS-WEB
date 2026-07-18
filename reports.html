@@ -12,8 +12,10 @@
     />
   </head>
   <body>
-    <nav>
-      <a href="index.html" class="logo">
+    <nav class="navbar">
+
+    <div class="logo">
+       <a href="index.html" class="logo">
         <img
           src="https://files.catbox.moe/ta4pt5.png"
           alt="EP College of Education Logo"
@@ -22,12 +24,18 @@
           <h2>ConcernHub</h2>
           <small>EP College of Education, Amedzofe</small>
         </div>
-      </a>
-      <a href="index.html">Home</a>
-      <a href="submit.html">Submit</a>
-      <a href="reports.html">Reports</a>
-      <a href="track.html">Track</a>
-    </nav>
+    </div>
+
+    <button type="button" id="menuBtn" class="menu-btn">
+    <i class="fas fa-bars"></i>
+</button>
+
+    <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="track.html">Track</a></li>
+    </ul>
+
+</nav>
 
     <div class="container">
       <h1>All Concerns</h1>
