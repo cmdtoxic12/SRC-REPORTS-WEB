@@ -86,8 +86,17 @@ nav.navbar {
   color: white;
 
   text-decoration: none;
+  
+  font-weight: bold;
 
   font-size: 18px;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
 }
 
 /* MENU BUTTON */
