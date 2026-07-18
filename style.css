@@ -103,8 +103,6 @@ nav a:hover {
 /* HAMBURGER */
 
 .menu-btn {
-  display: none;
-
   position: absolute;
   right: 20px;
   top: 50%;
@@ -123,6 +121,16 @@ nav a:hover {
   font-size: 28px;
 
   cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.menu-btn:hover {
+  box-shadow: 0 0 20px #38bdf8;
+}
+
+.menu-btn i {
+  pointer-events: none;
 }
 
 /* MOBILE */
