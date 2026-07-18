@@ -1590,3 +1590,37 @@ textarea:focus {
 
   transform: scale(1.1);
 }
+
+.pin-checkbox {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin: 20px 0;
+
+  font-size: 16px;
+}
+
+.pin-checkbox input {
+  width: 18px;
+
+  height: 18px;
+
+  cursor: pointer;
+}
+
+.pin-checkbox label {
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.pin-checkbox input:checked {
+  accent-color: #38bdf8;
+
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
