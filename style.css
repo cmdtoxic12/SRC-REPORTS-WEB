@@ -86,7 +86,7 @@ nav.navbar {
   color: white;
 
   text-decoration: none;
-  
+
   font-weight: bold;
 
   font-size: 18px;
@@ -1755,4 +1755,52 @@ textarea:focus {
   accent-color: #38bdf8;
 
   filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+@media (max-width: 768px) {
+  #announcementContainer {
+    padding: 10px;
+  }
+
+  .announcement-card {
+    min-height: auto;
+    padding: 15px;
+
+    border-radius: 15px;
+  }
+
+  .announcement-card img {
+    height: 120px;
+    width: 100%;
+
+    object-fit: cover;
+  }
+
+  .announcement-content h2 {
+    font-size: 18px;
+  }
+
+  .announcement-content p {
+    font-size: 14px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+  }
+
+  .announcement-category {
+    font-size: 12px;
+  }
+
+  .announcement-time {
+    font-size: 12px;
+  }
+
+  .read-more-btn,
+  .attachment-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
 }
