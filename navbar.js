@@ -1,18 +1,30 @@
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+if(menuBtn && navLinks){
 
-  // change icon
+    menuBtn.addEventListener("click", function(e){
 
-  const icon = menuBtn.querySelector("i");
+        e.preventDefault();
 
-  if (navLinks.classList.contains("active")) {
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-xmark");
-  } else {
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
-  }
-});
+        navLinks.classList.toggle("active");
+
+
+        const icon = menuBtn.querySelector("i");
+
+
+        if(navLinks.classList.contains("active")){
+
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+
+        }else{
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+}
