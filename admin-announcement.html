@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="card dash-card">
+      <h2>Create Announcement</h2>
+
+      <input
+        type="text"
+        id="announcementTitle"
+        placeholder="Announcement title"
+      />
+
+      <select id="announcementCategory">
+        <option>General</option>
+        <option>Academic</option>
+        <option>Exams</option>
+        <option>Events</option>
+        <option>Emergency</option>
+      </select>
+
+      <textarea
+        id="announcementContent"
+        placeholder="Write announcement..."
+      ></textarea>
+
+      <input type="file" id="announcementFile" accept="image/*,.pdf" />
+
+      <label>
+        <input type="checkbox" id="announcementPinned" />
+
+        Pin announcement
+      </label>
+
+      <button onclick="publishAnnouncement()">Publish Announcement</button>
+    </div>
+
+    <div id="announcementList">
+       Loading announcements...
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="announcement.js"></script>
+  </body>
+</html>

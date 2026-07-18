@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Report & Ideas Platform</title>
-      <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
@@ -32,6 +32,22 @@
       <a href="reports.html">Reports</a>
       <a href="track.html">Track</a>
     </nav>
+
+    <section
+      id="announcementSection"
+      class="announcement-section"
+      style="display: block"
+    >
+      <div class="announcement-slider">
+        <button class="slider-btn" id="prevAnnouncement">❮</button>
+
+        <div id="announcementContainer"></div>
+
+        <button class="slider-btn" id="nextAnnouncement">❯</button>
+      </div>
+
+      <div id="announcementDots" class="announcement-dots"></div>
+    </section>
 
     <section class="hero">
       <h1>Report Issues. Share Ideas.</h1>
@@ -95,13 +111,23 @@
           <button id="emojiBtn">😊</button>
 
           <div id="emojiContainer">
-        <emoji-picker id="emojiPicker"></emoji-picker>
-    </div>
+            <emoji-picker id="emojiPicker"></emoji-picker>
+          </div>
           <input id="chatInput" placeholder="Type your message..." />
           <button onclick="sendChat()">
-  <i class="fa-solid fa-paper-plane"></i>
-  </button>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
         </div>
+      </div>
+    </div>
+
+    <div id="announcementModal" class="announcement-modal">
+      <div class="modal-box">
+        <span onclick="closeAnnouncementModal()"> ✕ </span>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalContent"></p>
       </div>
     </div>
 
@@ -114,5 +140,6 @@
       src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
     ></script>
     <script src="chat.js"></script>
+    <script src="announcement.js"></script>
   </body>
 </html>

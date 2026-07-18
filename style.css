@@ -1290,3 +1290,303 @@ textarea:focus {
 #emojiContainer.show {
   display: block;
 }
+
+.admin-announcement-card {
+  background: rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(15px);
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  margin: 15px 0;
+
+  border: 1px solid rgba(56, 189, 248, 0.3);
+
+  transition: 0.3s;
+}
+
+.admin-announcement-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+}
+
+.actions {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+.pin {
+  color: #38bdf8;
+}
+
+.announcement-section {
+  width: 100%;
+  margin: 25px auto;
+}
+
+.announcement-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.announcement-card {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  padding: 30px;
+  min-height: 150px;
+}
+
+.announcement-card img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.announcement-content {
+  flex: 1;
+}
+
+.announcement-time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.announcement-category {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: #2563eb;
+  color: white;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.announcement-card h2 {
+  margin-bottom: 15px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#prevAnnouncement {
+  left: 15px;
+}
+
+#nextAnnouncement {
+  right: 15px;
+}
+
+.announcement-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.announcement-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #94a3b8;
+  cursor: pointer;
+}
+
+.announcement-dots .active {
+  background: #3b82f6;
+}
+
+.read-more-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+}
+
+.announcement-card {
+  animation: slideIn 0.5s ease;
+  transition: 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pinned-announcement {
+  border: 1px solid #38bdf8;
+
+  box-shadow:
+    0 0 15px rgba(56, 189, 248, 0.7),
+    0 0 40px rgba(56, 189, 248, 0.3);
+
+  animation:
+    slideIn 0.5s ease,
+    glowPulse 3s infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(56, 189, 248, 1);
+  }
+}
+
+.announcement-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+.modal-box {
+  background: #111827;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  max-width: 600px;
+
+  width: 90%;
+
+  box-shadow: 0 0 40px #38bdf8;
+}
+
+#prevAnnouncement,
+#nextAnnouncement {
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.announcement-slider {
+  position: relative;
+}
+
+/* Hidden by default */
+.slider-btn {
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+  z-index: 20;
+}
+
+/* Show on hover */
+.announcement-slider:hover .slider-btn {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+/* Button positions */
+#prevAnnouncement {
+  position: absolute;
+
+  left: 20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+#nextAnnouncement {
+  position: absolute;
+
+  right: 20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+/* Hover animation */
+.announcement-slider:hover #prevAnnouncement {
+  transform: translateY(-50%) translateX(0);
+}
+
+.announcement-slider:hover #nextAnnouncement {
+  transform: translateY(-50%) translateX(0);
+}
+
+#prevAnnouncement,
+#nextAnnouncement {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(56, 189, 248, 0.35);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+#prevAnnouncement:hover,
+#nextAnnouncement:hover {
+  background: rgba(80, 84, 85, 0.8);
+
+  transform: scale(1.1);
+}
