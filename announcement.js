@@ -252,7 +252,7 @@ ${
   item.content.length > 120
     ? `
 <button onclick="openAnnouncementModal(${currentAnnouncement})">
-Read More
+    Read More
 </button>
 `
     : ""
@@ -345,11 +345,17 @@ function renderAnnouncement() {
   const a = announcements[currentAnnouncement];
 
   const container = document.getElementById("announcementContainer");
-  if (container) {
-    container.innerHTML = `
+
+  if (!container) return;
+
+  const shortContent =
+    a.content.length > 180 ? a.content.substring(0, 180) + "..." : a.content;
+
+  container.innerHTML = `
+
         <div class="announcement-card">
 
-            ${a.image_url ? `<img src="${a.image_url}">` : ""}
+            ${a.image_url ? `<img src="${a.image_url}" class="announcement-image">` : ""}
 
             <div class="announcement-content">
 
@@ -361,23 +367,77 @@ function renderAnnouncement() {
 
                 <h2>${a.title}</h2>
 
-                <p>${a.content}</p>
+                <p>${shortContent}</p>
 
-                ${
-                  a.attachment_url
-                    ? `<a class="read-more-btn" href="${a.attachment_url}" target="_blank">
-                        Open Attachment
-                    </a>`
-                    : ""
-                }
+                <small>
+                    ${formatTimeAgo(a.created_at)}
+                </small>
+
+                <div class="announcement-actions">
+
+                    <button
+                        class="read-more-btn"
+                        onclick="openAnnouncementModal(${currentAnnouncement})">
+
+                        Read More
+
+                    </button>
+
+                    ${
+                      a.attachment_url
+                        ? `
+                        <a
+                            class="attachment-btn"
+                            href="${a.attachment_url}"
+                            target="_blank">
+
+                            📄 Attachment
+
+                        </a>`
+                        : ""
+                    }
+
+                </div>
 
             </div>
 
         </div>
+
     `;
 
-    updateDots();
+  updateDots();
+}
+
+function openAnnouncementModal(index) {
+  const a = homepageAnnouncements[index];
+
+  if (!a) return;
+
+  document.getElementById("modalTitle").textContent = a.title;
+
+  document.getElementById("modalCategory").textContent = a.category;
+
+  document.getElementById("modalDate").textContent = getTimeAgo(a.created_at);
+
+  document.getElementById("modalContent").innerHTML = a.content.replace(
+    /\n/g,
+    "<br>",
+  );
+
+  const img = document.getElementById("modalImage");
+
+  if (a.image_url) {
+    img.src = a.image_url;
+    img.style.display = "block";
+  } else {
+    img.style.display = "none";
   }
+
+  document.getElementById("announcementModal").style.display = "flex";
+}
+
+function closeAnnouncementModal() {
+  document.getElementById("announcementModal").style.display = "none";
 }
 function nextAnnouncement() {
   if (!homepageAnnouncements.length) {

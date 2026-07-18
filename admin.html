@@ -12,8 +12,10 @@
     />
   </head>
   <body>
-    <nav>
-      <a href="index.html" class="logo">
+    <nav class="navbar">
+
+    <div class="logo">
+       <a href="index.html" class="logo">
         <img
           src="https://files.catbox.moe/ta4pt5.png"
           alt="EP College of Education Logo"
@@ -22,13 +24,20 @@
           <h2>ConcernHub</h2>
           <small>EP College of Education, Amedzofe</small>
         </div>
-      </a>
-      <a href="index.html">Home</a>
-      <a href="reports.html">Reports</a>
-      <a href="chat-admin.html">Live Chat</a>
-      <a href="admin-announcement.html">Announcements</a>
-      <button onclick="logout()">Logout</button>
-    </nav>
+    </div>
+
+    <button type="button" id="menuBtn" class="menu-btn">
+    <i class="fas fa-bars"></i>
+</button>
+
+    <ul id="navLinks" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="submit.html">Submit</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="track.html">Track</a></li>
+    </ul>
+
+</nav>
 
     <div class="container">
       <h1>Admin Dashboard</h1>
@@ -99,6 +108,7 @@
     <script src="supabase.js"></script>
     <script src="auth-check.js"></script>
     <script src="admin.js"></script>
+    <script src="navbar.js"></script>
     <script src="animations.js"></script>
     <script src="chat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>

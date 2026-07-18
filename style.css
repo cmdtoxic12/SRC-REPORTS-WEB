@@ -55,6 +55,135 @@ nav a:hover {
   color: var(--primary);
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 15px 30px;
+  background: #101a35;
+}
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 65px;
+}
+
+.logo h2 {
+  margin: 0;
+  color: white;
+}
+
+.logo p {
+  margin: 0;
+  color: #bbb;
+}
+
+/* DESKTOP NAV */
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* HAMBURGER */
+
+.menu-btn {
+  display: none;
+
+  position: absolute;
+  right: 20px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 60px;
+  height: 55px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: #13254b;
+  color: white;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  /* hide desktop links */
+
+  .nav-links {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    background: #101a35;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px 0;
+
+    display: flex;
+
+    transform: translateY(-20px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s ease;
+  }
+
+  /* opened menu */
+
+  .nav-links.active {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    pointer-events: auto;
+  }
+
+  /* show hamburger */
+
+  .menu-btn {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+  }
+}
+
 .hero {
   text-align: center;
   padding: 100px 20px 60px;
@@ -1472,29 +1601,33 @@ textarea:focus {
 .announcement-modal {
   position: fixed;
   inset: 0;
-
-  background: rgba(0, 0, 0, 0.7);
-
+  background: rgba(0, 0, 0, 0.75);
   display: none;
-
-  align-items: center;
   justify-content: center;
-
-  z-index: 999;
+  align-items: center;
+  z-index: 9999;
 }
 
-.modal-box {
-  background: #111827;
-
+.announcement-modal-content {
+  width: min(700px, 90%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #18213a;
+  color: #fff;
   padding: 30px;
-
   border-radius: 20px;
+}
 
-  max-width: 600px;
+.close-modal {
+  float: right;
+  font-size: 32px;
+  cursor: pointer;
+}
 
-  width: 90%;
-
-  box-shadow: 0 0 40px #38bdf8;
+.modal-image {
+  width: 100%;
+  border-radius: 12px;
+  margin: 15px 0;
 }
 
 #prevAnnouncement,
